@@ -3,7 +3,6 @@ import express from 'express';
 
 const router = express.Router();
 
-// Route to generate a new YouTube thumbnail
 router.post('/generate-thumbnail', async (req, res) => {
   const {prompt, filename} = req.body;
 

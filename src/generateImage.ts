@@ -52,6 +52,6 @@ export const generateImage = async (prompt: string, filename: string) => {
     } else {
       console.error('An unknown error occurred');
     }
-    throw error; // Re-throw error for further handling
+    throw error;
   }
 };

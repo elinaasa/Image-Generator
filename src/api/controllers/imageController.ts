@@ -1,9 +1,8 @@
 import express from 'express';
-import {generateImage} from '../../generateImage'; // Import the generateImage function
+import {generateImage} from '../../generateImage';
 
 const router = express.Router();
 
-// Route to generate a new YouTube thumbnail
 router.post('/generate-thumbnail', async (req, res) => {
   const {prompt, filename} = req.body;
 
