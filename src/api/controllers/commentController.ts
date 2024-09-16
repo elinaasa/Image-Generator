@@ -1,4 +1,8 @@
 import {Request, Response, NextFunction} from 'express';
+import fetchData from 'node-fetch';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const commentPost = async (
   req: Request<{}, {}, {text: string}>,
@@ -6,14 +10,40 @@ const commentPost = async (
   next: NextFunction
 ) => {
   try {
-    try {
-      // TODO: Generate a sarcastic, hostile AI response to a Youtube comment, imitating an 18th-century English aristocrat, and return it as a JSON response.
-      // Use the text from the request body to generate the response.
-      // Instead of using openai library, use fetchData to make a post request to the server.
-      // see https://platform.openai.com/docs/api-reference/chat/create for more information
-      // You don't need an API key if you use the URL provided in .env.sample and Metropolia VPN
-      // Example: instad of https://api.openai.com/v1/chat/completions use process.env.OPENAI_API_URL + '/v1/chat/completions'
-    } catch (error) {
+    const {text} = req.body;
+
+    const data = {
+      model: 'gpt-3.5-turbo',
+      messages: [
+        {
+          role: 'system',
+          content:
+            'You are an 18th-century English aristocrat. Respond in a sarcastic and hostile manner.',
+        },
+        {
+          role: 'user',
+          content: text,
+        },
+      ],
+      max_tokens: 150,
+    };
+
+    const response = await fetchData(
+      process.env.OPENAI_API_URL + '/v1/chat/completions',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    const result = await response.json();
+    const aiResponse = result.choices[0].message.content;
+
+    res.json({response: aiResponse});
+  } catch (error) {
     next(error);
   }
 };
