@@ -1,4 +1,6 @@
-# AI-commenter
+# Image generator
 
-![comment](https://github.com/user-attachments/assets/767fb281-d926-43c2-bac6-575d2ca76ccd)
-![comment](https://github.com/user-attachments/assets/81cae611-e254-4e9e-bb67-3f350c237610)
+![generate](https://github.com/user-attachments/assets/429e9fde-6f68-48a1-b0d1-c29f75790bba)
+![saved](https://github.com/user-attachments/assets/9cf3f003-c5a8-4a3e-9e8e-ffb69ecb908e)
+
+![thumb](https://github.com/user-attachments/assets/6390ce0b-6b2e-4175-ad09-d0aeda87d1b9)
